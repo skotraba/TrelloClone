@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Typography, InputBase, Paper, Button, IconButton } from '@material-ui/core';
+import { InputBase, Paper, Button, IconButton } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles } from '@material-ui/core/styles';
 import dataApi from '../../data/dataApi';
@@ -22,10 +22,12 @@ const useStyle = makeStyles((theme) => ({
 
 }));
 
-export default function Input({ setOpen }) {
+export default function Input({ setOpen, listid }) {
 
   const {addCard} = useContext(dataApi)
   const classes = useStyle();
+
+  // State
   const [ cardContent, setCardContent ] = useState('');
   
   const onChangeHandler = (e) => {
@@ -33,9 +35,17 @@ export default function Input({ setOpen }) {
   }
 
   const handleBtnConfirm = () => {
-    addCard(cardContent);
+    if(cardContent !== ""){
+      addCard(cardContent, listid);
+    }
     setOpen(false);
+    setCardContent("")
   }
+
+  // const handleBlur = () => {
+  //   setOpen(false);
+  //   setCardContent("");
+  // }
 
   return (
     <div>
@@ -43,7 +53,7 @@ export default function Input({ setOpen }) {
         <Paper className={classes.card}>
           <InputBase 
           onChange={onChangeHandler}
-          onBlur={() => setOpen(false)} 
+          onBlur={handleBtnConfirm} 
           placeholder="Enter text here" 
           multiline 
           value = {cardContent}

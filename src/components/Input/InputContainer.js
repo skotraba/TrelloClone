@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, fade } from '@material-ui/core/styles';
-import { Typography, InputBase, Paper, Collapse } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+import { Typography, Paper, Collapse } from '@material-ui/core';
+// import AddIcon from '@material-ui/icons/Add';
+// import Fab from '@material-ui/core/Fab';
 import Input from './Input';
 
 
@@ -20,9 +20,6 @@ const useStyle = makeStyles((theme) => ({
     }
 
   },
-  root: {
-    maringTop: theme.spacing(1),
-  },
 
 }));
 
@@ -30,11 +27,13 @@ const useStyle = makeStyles((theme) => ({
 function InputContainer(props) {
 
   const classes=useStyle();
+
   const [open, setOpen] = useState(false);
+
   return (
     <div className={classes.root}>
       <Collapse in={open}>
-        <Input setOpen={setOpen}/>
+        <Input setOpen={setOpen} listid={props.listid} />
       </Collapse>
       <Collapse in={!open}>
         <Paper className={classes.addCard} elevation={0} onClick={() => setOpen(!open)}>

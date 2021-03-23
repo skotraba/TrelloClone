@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Typography, CssBaseline } from '@material-ui/core';
+import { Paper, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -22,15 +22,16 @@ export default function List({ list }) {
 
   const classes = useStyle();
   
+
   return (
     <div >
       <Paper className={classes.root}>
         <CssBaseline/>
         <Title title={list.title}/>
         {list.cards.map((card) => {
-          return <Card content={card.title} key={card.id}/>
+          return <Card content={card.content} key={card.id}/>
         })}
-        <InputContainer/>
+        <InputContainer listid={list.id}/>
      </Paper>
     </div>
   );
