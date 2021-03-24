@@ -9,8 +9,10 @@ import InputContainer from './components/Input/InputContainer';
 import DataApi from './data/dataApi';
 
 function App() {
+  
 
   const [data, setData] = useState(myData);
+  console.log(data);
 
   const addCard = ((content, listid) => {
     // console.log(content, listid);
@@ -73,7 +75,6 @@ function App() {
 
   const onDragEnd = (result) => {
     const {destination, source, draggableId} = result;
-    console.log(destination, source, draggableId)
     if(!destination) return;
 
     const sourceList = data.lists[source.droppableId];
@@ -84,16 +85,26 @@ function App() {
       sourceList.cards.splice(source.index, 1);
       destinationList.cards.splice(destination.index, 0, draggingCard);
 
-      const newState = {
-        ...data,
-        lists:{
-          ...data.lists,
-          [sourceList.id]:destinationList
-        }
-      };
+      // const newState = {
+      //   ...data,
+      //   lists:{
+      //     ...data.lists,
+      //     [sourceList.id]:destinationList
+      //   }
+      // };
+
+      
+      // setData(newState);
+      // console.log(newState);
 
 
-      setData(newState);
+    }
+
+    else {
+      sourceList.cards.splice(source.index, 1);
+      destinationList.cards.splice(destination.index, 0, draggingCard);
+
+      console.log(data);
 
     }
   }
