@@ -1,35 +1,35 @@
 import React from 'react';
-import { Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Draggable } from 'react-beautiful-dnd';
+import {Paper} from '@material-ui/core';
 
+//Components
+import CardItem from '../CardItem/CardItem';
+import Input from '../Input/Input';
 
-const useStyle = makeStyles((theme) => ({
-  card: {
-    padding: theme.spacing(1, 1, 1, 2),
-    margin: theme.spacing(1),
+//Sass/Css
+import './Card.scss';
 
-  },
-}));
-
-function Card( props ) {
-
-  const classes = useStyle();
+export default function Card(props) {
   return (
-    <Draggable draggableId={props.id} index={props.index} key={props.id}>
-      {(provided) => (
-      <div
-        ref={provided.innerRef}
-         {...provided.dragHandleProps} 
-         {...provided.draggableProps}
-      >
-        <Paper className={classes.card}>{props.content}</Paper>
-      </div>
-      )}
+    <Paper className="card">
+        <h3 className="card__title">To Do List</h3>
       
-    </Draggable>
-    
+      <div className="card__scrollable">
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <Input className="card__input"/>
+      </div>
+    </Paper>
+  
   );
 }
-
-export default Card;

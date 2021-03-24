@@ -1,11 +1,26 @@
-.myContainer {
-  display: flex;
-  
+html {
+  overflow-y: hidden;
 }
+
 
 body {
   /* background: linear-gradient(to right, #9da9b9 43%, #ffffff 100%);
    */
-   background: linear-gradient(to right, #b9b79d 43%, #ffffff 100%);
+   /* background: linear-gradient(to right, #b9b79d 43%, #ffffff 100%); */
+   font-family: 'Open Sans', sans-serif;
+   font-size: large;
+   color: #252422;
+   overflow-x: scroll;
+   overflow-y: hidden;
+   margin: 0;
+   padding: 0;
 }
 
+
+.myContainer {
+  display: flex;
+  padding: .5rem;
+  padding-bottom: 5rem;
+  margin: .5rem;
+  overflow-x: scroll;
+}
