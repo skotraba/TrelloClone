@@ -9,6 +9,7 @@ import Card from '../Card/Card';
 
 const useStyle = makeStyles((theme) => ({
   root: {
+    minWidth: '100%',
     width: '300px',
     backgroundColor: '#ddd',
     marginLeft: theme.spacing(1),
@@ -27,7 +28,7 @@ export default function List({ list }) {
     <div >
       <Paper className={classes.root}>
         <CssBaseline/>
-        <Title title={list.title}/>
+        <Title title={list.title} listid={list.id}/>
         {list.cards.map((card) => {
           return <Card content={card.content} key={card.id}/>
         })}

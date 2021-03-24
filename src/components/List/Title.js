@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Typography, InputBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
+import dataApi from '../../data/dataApi';
 
 const useStyle = makeStyles((theme) => ({
   
@@ -23,10 +25,22 @@ const useStyle = makeStyles((theme) => ({
   }
 }));
 
-function Title(props) {
+function Title({ title, listid }) {
 
   const [open, setOpened] = useState(false);
   const classes = useStyle();
+  const [newTitle, setNewTitle] = useState(title);
+  const { updateListTitle } = useContext(dataApi)
+
+  const handleOnChange = (e) => {
+    setNewTitle(e.target.value)
+  }
+
+  const handleBlur = () => {
+    updateListTitle(newTitle, listid)
+    setOpened(false)
+    
+  }
 
   return (
     <div>
@@ -40,13 +54,13 @@ function Title(props) {
             className: classes.input,
           }}
           fullWidth
-          onBlur = {() => setOpened(!open)}>
-            
+          onChange={handleOnChange}
+          onBlur = {handleBlur}>  
           </InputBase>
         </div>
         ) : (
           <div className={classes.editableTitle}>
-           <Typography className={classes.editables} onClick={() => setOpened(!open)}>{props.title}</Typography> 
+           <Typography className={classes.editables} onClick={() => setOpened(!open)}>{title}</Typography> 
            <MoreHorizIcon/>
           </div>
         )

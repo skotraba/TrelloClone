@@ -22,24 +22,35 @@ const useStyle = makeStyles((theme) => ({
 
 }));
 
-export default function Input({ setOpen, listid }) {
+export default function Input({ setOpen, listid, type }) {
 
-  const {addCard} = useContext(dataApi)
+  const {addCard, addList} = useContext(dataApi)
   const classes = useStyle();
 
   // State
-  const [ cardContent, setCardContent ] = useState('');
+  const [ content, setContent ] = useState('');
   
   const onChangeHandler = (e) => {
-    setCardContent(e.target.value);
+    setContent(e.target.value);
   }
 
   const handleBtnConfirm = () => {
-    if(cardContent !== ""){
-      addCard(cardContent, listid);
+
+    if(type === 'list'){
+      console.log("I'm a list")
+      addList(content);
+      setContent('')
+      setOpen(false);
     }
-    setOpen(false);
-    setCardContent("")
+    else {
+      if(content !== ""){
+        addCard(content, listid);
+      }
+      setOpen(false);
+      setContent("")
+    }
+
+    
   }
 
   // const handleBlur = () => {
@@ -54,9 +65,9 @@ export default function Input({ setOpen, listid }) {
           <InputBase 
           onChange={onChangeHandler}
           onBlur={handleBtnConfirm} 
-          placeholder="Enter text here" 
+          placeholder={type == "list" ? "Enter title" : "Enter card text here"}
           multiline 
-          value = {cardContent}
+          value = {content}
           fullWidth 
           inputProps={{
             className: classes.input,
@@ -70,7 +81,7 @@ export default function Input({ setOpen, listid }) {
             setOpen(false);
             }} 
           className={classes.btnConfirm}
-          onClick={handleBtnConfirm}>Add Card</Button>
+          onClick={handleBtnConfirm}>{type == 'list' ? "Add List" : "Add Card"}</Button>
         <IconButton>
           <ClearIcon 
           onClick={() => setOpen(false)}/>

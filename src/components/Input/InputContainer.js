@@ -17,7 +17,8 @@ const useStyle = makeStyles((theme) => ({
     background: '#AEA3B0',
     '&:hover': {
       backgroundColor: fade('#E3D0D8', 0.25)
-    }
+    },
+    color: 'white'
 
   },
 
@@ -33,15 +34,12 @@ function InputContainer(props) {
   return (
     <div className={classes.root}>
       <Collapse in={open}>
-        <Input setOpen={setOpen} listid={props.listid} />
+        <Input setOpen={setOpen} listid={props.listid} type={props.type} />
       </Collapse>
       <Collapse in={!open}>
         <Paper className={classes.addCard} elevation={0} onClick={() => setOpen(!open)}>
           <Typography>
-            {/* <Fab color="secondary" aria-label="add" >
-              <AddIcon fontSize='small' />
-            </Fab> */}
-            + Add Card
+            {props.type == 'list' ? "Add List" : "Add Card"}
           </Typography>
         </Paper>
       </Collapse>
