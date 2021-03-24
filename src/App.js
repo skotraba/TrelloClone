@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {v4 as uuid} from "uuid";
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import List from './components/List/list';
 import myData from './data/data';
@@ -69,19 +70,47 @@ function App() {
     setData(newState);
   }
 
+
+  const onDragEnd = (result) => {
+    const {destination, source, draggableId} = result;
+    console.log(destination, source, draggableId)
+    if(!destination) return;
+
+    const sourceList = data.lists[source.droppableId];
+    const destinationList = data.lists[destination.droppableId];
+    const draggingCard = sourceList.cards.filter((card) => card.id === draggableId )[0];
+
+    if(source.droppableId === destination.droppableId){
+      sourceList.cards.splice(source.index, 1);
+      destinationList.cards.splice(destination.index, 0, draggingCard);
+
+      const newState = {
+        ...data,
+        lists:{
+          ...data.lists,
+          [sourceList.id]:destinationList
+        }
+      };
+
+
+      setData(newState);
+
+    }
+  }
+
   return (
     <DataApi.Provider value={{ addCard, addList, updateListTitle }}>
-      <div className="myContainer">
+      <DragDropContext onDragEnd={onDragEnd}>
         <div className="myContainer">
-          {data.listIds.map((listId) => {
-            const list = data.lists[listId]
-            return <List list={list} key={listId}   />
-          })}
+          <div className="myContainer">
+            {data.listIds.map((listId) => {
+              const list = data.lists[listId]
+              return <List list={list} key={listId}   />
+            })}
+          </div>
+          <InputContainer type="list"/>
         </div>
-        <InputContainer type="list"/>
-      </div>
-      
-      
+      </DragDropContext>
     </DataApi.Provider>
    
   );
