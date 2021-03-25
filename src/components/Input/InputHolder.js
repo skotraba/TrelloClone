@@ -6,7 +6,7 @@ import { Button, Collapse } from '@material-ui/core';
 import InputGet from './InputGet';
 
 //CSS
-import '../Card/Card.scss';
+import './Input.scss';
 
 export default function InputHolder(props) {
 

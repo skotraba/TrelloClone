@@ -5,6 +5,11 @@ $dark: #bbb;
 $medium: #ccc;
 $light: #eee;
 
+$breakpoint-tablet: 768px;
+$mediaMaxWidth: 1260px;
+$mediaBp1Width: 960px;
+$mediaMinWidth: 480px;
+
 .card {
   padding: .5rem;
   background-color: $dark !important;
@@ -61,6 +66,13 @@ $light: #eee;
   color: rgb(73, 73, 73) !important;
 }
 
-.myInput {
-  background: #fff !important;
+
+@media (min-width: $mediaMinWidth){
+
+  .card {
+    min-width: 20%;
+  }
 }
+
+
+
