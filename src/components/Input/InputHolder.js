@@ -12,46 +12,16 @@ export default function InputHolder(props) {
 
   const [open, setOpen ] = useState(false)
 
-  // if(!open){
-  //   return (
-  //     <div className="test">
-  //       <Collapse in={!open}>
-  //        <Button className="myBtn" size="medium" variant="contained"
-  //        onClick={(() => setOpen(true))}
-  //        >Add Card</Button>
-  //       </Collapse>
-  //   </div>
-  //   )
-  // }
-
-  // return (
-  //   <div className="test">
-  //     <Collapse in={open}>
-  //       <Button 
-  //       className="myBtn"
-  //        size="medium" 
-  //        variant="contained"
-  //        onClick={(() => setOpen(!open))}
-  //        >Add Card</Button>
-  //       <Collapse in={open}>
-  //         <InputGet/>
-  //       </Collapse>
-  //     </Collapse>
-      
-  //   </div>
-  // );
-
-
   return (
     <div className="test">
       <Collapse in={open}>
-        <InputGet setOpen={setOpen}></InputGet>
-        <Button 
+        <InputGet listIndex={props.listIndex} setOpen={setOpen}></InputGet>
+        {/* <Button 
         className="myBtn"
          size="medium" 
          variant="contained"
          onClick={(() => setOpen(!open))}
-         >Add Card</Button>
+         >Add Card</Button> */}
       </Collapse>
       <Collapse in={!open}>
       <Button 

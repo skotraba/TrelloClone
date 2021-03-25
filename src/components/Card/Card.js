@@ -30,10 +30,10 @@ export default function Card(props) {
        {props.cards.map((info, index) => (
          <CardItem 
          className="card__heading" 
-         id={index} 
+         cardIndex={index} 
          content={info}></CardItem>
        ))}
-       <InputHolder className="card__input"/>
+       <InputHolder className="card__input" listIndex={props.index}/>
       </div>
     </Paper>
   
