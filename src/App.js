@@ -46,7 +46,7 @@ export default function App() {
     return <h1>Loading...</h1>
   }
 
-  //Local Api Data
+  //Data Api Updating
    const addCardItem = ((content, index) => {
 
     let newCardItem = data[index];
@@ -56,13 +56,19 @@ export default function App() {
       ...data,
     ]
     newData[index] = newCardItem
-    console.log(newData)
     setData(newData)
 
-    ref.doc(newCardItem.id).set(newCardItem);
+    // ref.doc(newCardItem.id).set(newCardItem);
+
+   })
+
+   const removeCardItem = ((lindex, cindex) => {
+     console.log(lindex, cindex)
+     let newData = [...data]
+     newData[lindex].cardItems.pop(cindex);
+     setData(newData);
+     console.log(data);
     
-
-
 
    })
 
@@ -71,7 +77,7 @@ export default function App() {
   return (
     <div>
       <h2>Trello Clone</h2>
-      <DataApi.Provider value={{addCardItem}}>
+      <DataApi.Provider value={{addCardItem, removeCardItem}}>
         <DragDropContext>
           <div className="myContainer">
             {data.map((list, index) => 

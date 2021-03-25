@@ -31,6 +31,7 @@ export default function Card(props) {
          <CardItem 
          className="card__heading" 
          cardIndex={index} 
+         listIndex={props.index}
          content={info}></CardItem>
        ))}
        <InputHolder className="card__input" listIndex={props.index}/>
