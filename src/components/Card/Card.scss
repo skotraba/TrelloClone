@@ -17,6 +17,7 @@ $light: #eee;
   &__scrollable {
     position: absolute;
     max-height: 80%;
+    min-width: 80%;
     overflow-y: scroll;
     padding: .5rem;
   }
@@ -27,8 +28,8 @@ $light: #eee;
   }
 
   &__input {
-    margin-top: 5rem;
-    z-index: 5;
+    // margin-top: 5rem;
+    // z-index: 5;
   }
 }
 
@@ -51,4 +52,5 @@ $light: #eee;
 
 .myInput {
   background: #fff !important;
+  margin: 1rem;
 }
