@@ -18,6 +18,15 @@ export default function Card(props) {
         <CardItem className="card__heading"></CardItem>
         <CardItem className="card__heading"></CardItem>
         <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
+        <CardItem className="card__heading"></CardItem>
         <InputHolder className="card__input"/>
       </div>
     </Paper>
