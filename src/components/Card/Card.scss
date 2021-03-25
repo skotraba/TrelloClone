@@ -1,0 +1,54 @@
+
+
+
+$dark: #bbb;
+$medium: #ccc;
+$light: #eee;
+
+.card {
+  padding: .5rem;
+  background-color: $dark !important;
+  min-width: 80%;
+  min-height: 80vh;
+  margin: .5rem;
+  position: relative;
+  
+
+  &__scrollable {
+    position: absolute;
+    max-height: 80%;
+    overflow-y: scroll;
+    padding: .5rem;
+  }
+
+  &__title {
+    margin: 0;
+    padding: .5rem ;
+  }
+
+  &__input {
+    margin-top: 5rem;
+    z-index: 5;
+  }
+}
+
+.cardItem{
+  padding: 1rem 0;
+  background-color: $light;
+  margin: 1rem 0;
+  border-radius: .5rem;
+
+  &__text {
+    padding: .2rem .5rem;
+  }
+}
+
+
+.myBtn {
+  background: rgb(115, 215, 228) !important;
+  color: rgb(73, 73, 73) !important;
+}
+
+.myInput {
+  background: #fff !important;
+}
