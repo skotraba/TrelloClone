@@ -87,16 +87,32 @@ export default function App() {
      const newData = [...data, newList];
 
      console.log(newData)
+     ref.doc(newList.id).set(newList);
      setData(newData);
 
+     
+
    })
+
+   const removeList = ((lindex) => {
+    let newData = [...data];
+    console.log(newData);
+    newData.splice(lindex, 1);
+    console.log(newData)
+    
+
+    ref.doc(data[lindex].id).delete()
+
+    setData(newData)
+
+  })
 
 
 
   return (
     <div>
       <h2>Trello Clone</h2>
-      <DataApi.Provider value={{addCardItem, removeCardItem, addList}}>
+      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList}}>
         <DragDropContext>
           <div className="myContainer">
             {data.map((list, index) => 

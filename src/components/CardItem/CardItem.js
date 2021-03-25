@@ -1,10 +1,7 @@
 import React, {useContext} from 'react';
 import ClearIcon from '@material-ui/icons/Clear';
 
-
 import dataApi from '../../dataApi';
-
-
 
 export default function CardItem(props) {
 

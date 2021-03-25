@@ -17,6 +17,15 @@ $mediaMinWidth: 480px;
   min-height: 80vh;
   margin: .5rem;
   position: relative;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__titleBtn {
+    cursor: pointer;
+  }
   
 
   &__scrollable {
