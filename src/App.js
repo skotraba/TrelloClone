@@ -9,11 +9,15 @@ import Card from './Components/Card/Card';
 
 export default function App() {
   return (
-    <div className="myContainer">
-      <Card/>
-      <Card/>
-      <Card/>
+    <div>
+      <h2>Trello Clone</h2>
+      <div className="myContainer">
+        <Card/>
+        <Card/>
+        <Card/>
+      </div>
     </div>
+    
   )
 
 }

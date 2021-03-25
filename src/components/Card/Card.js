@@ -3,7 +3,7 @@ import {Paper} from '@material-ui/core';
 
 //Components
 import CardItem from '../CardItem/CardItem';
-import Input from '../Input/Input';
+import InputHolder from '../Input/InputHolder';
 
 //Sass/Css
 import './Card.scss';
@@ -18,16 +18,7 @@ export default function Card(props) {
         <CardItem className="card__heading"></CardItem>
         <CardItem className="card__heading"></CardItem>
         <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <CardItem className="card__heading"></CardItem>
-        <Input className="card__input"/>
+        <InputHolder className="card__input"/>
       </div>
     </Paper>
   
