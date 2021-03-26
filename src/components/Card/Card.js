@@ -11,7 +11,7 @@ import InputHolder from '../Input/InputHolder';
 
 //Sass/Css
 import './Card.scss';
-import { Droppable } from 'react-beautiful-dnd';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 
@@ -23,36 +23,50 @@ export default function Card(props) {
   const handleBtn = (lindex) => {
     removeList(lindex);
   }
+  // console.log(typeof(props.index))
 
   return (
-    <Droppable droppableId={props.index}>
-      {(provided) => (
-        <Paper 
-        {...provided.droppableProps}
-        ref={provided.innerRef}
-        className="card">
-          <div className="card__header">
-            <h3 className="card__title">{props.name}</h3>
-            <ClearIcon 
-            className="card__titleBtn"
-            onClick={() => handleBtn(props.index)}
-            />
-          </div>
-          <div className="card__scrollable">
-            {props.cards.map((info, index) => (
+    <Paper className="card">
+      <div className="card__header">
+        <h3 className="card__title">{props.name}</h3>
+        <ClearIcon 
+        className="card__titleBtn"
+        onClick={() => handleBtn(props.index)}
+        />
+      </div>
+      <Droppable droppableId={props.id}>
+        {
+          (provided) => (
+            <div 
+            className="card__scrollable"
+            {...provided.droppableProps}
+            ref={provided.innerRef}>
+            {props.cards.map((card, index) => (
               <CardItem 
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+              key={card.id}
               className="card__heading" 
               cardIndex={index} 
               listIndex={props.index}
-              content={info.content}></CardItem>
+              content={card.content}
+              cardId={card.id}>
+
+              </CardItem>
             ))}
+            {provided.placeholder}
             <InputHolder className="card__input" listIndex={props.index}/>
+            
           </div>
-       </Paper>
-      )}
-      
-    </Droppable>
-    
-  
+          )
+          
+        }
+      </Droppable>
+     
+    </Paper>
   );
 }
+
+// {...provided.draggableProps} {...provided.dragHandleProps}
+//     ref={provided.innerRef}

@@ -13,13 +13,14 @@ export default function CardItem(props) {
   }
 
   return (
-    <Draggable draggableId={props.cardIndex} key={props.cardIndex} index={props.cardIndex}>
+    <Draggable key={props.cardId} draggableId={props.cardId} index={props.cardIndex}>
       {
         (provided) => (
           <div 
-          {...provided.draggableProps} {...provided.dragHandleProps}
-          ref={provided.innerRef}
-          className="cardItem">
+          className="cardItem"
+          {...provided.dragHandleProps}
+          {...provided.draggableProps}
+          ref={provided.innerRef}>
             <div className="cardItem__text">{props.content} </div>
             <div><ClearIcon onClick={btnHandler} className="cardItem__icon"/></div>
           </div>
@@ -27,6 +28,9 @@ export default function CardItem(props) {
       }
      
     </Draggable>
+   
+   
+        
    
   );
 }

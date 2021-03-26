@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import DataApi from './dataApi';
 import firebase from './firebase';
 
-import {Button} from '@material-ui/core';
+// import {Button} from '@material-ui/core';
 
 //Components
 import Card from './Components/Card/Card';
@@ -121,29 +121,15 @@ export default function App() {
   })
 
 
+  //Drag and Drop
+  const handleDragEnd = (result) => {
+    console.log(result)
+    const items = Array.from(data);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
 
-
-  // const addL = () => {
-  //   const newId = uuid();
-  //   const content = "Somestuff I made up"
-  //   let CardItems = [
-  //     {
-  //       id: 12345,
-  //       content: "I'm a card"
-  //     },
-  //   ]
-  //    const newList = {
-  //      id: newId,
-  //      name: content,
-  //      cardItems: CardItems
-  //    }
-
-  //    const newData = [...data, newList];
-
-  //    console.log(newData)
-  //    ref.doc(newList.id).set(newList);
-  //    setData(newData);
-  // }
+    console.log(items);
+  }
 
 
 
@@ -151,11 +137,12 @@ export default function App() {
     <div>
       <h2>Trello Clone</h2>
       <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList}}>
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">
             {data.map((list, index) => 
             (
               <Card
+                key={list.id}
                 index={index}
                 id={list.id}
                 name={list.name}
@@ -166,7 +153,6 @@ export default function App() {
              <InputAddList/>
           </div>
         </DragDropContext>
-       
       </DataApi.Provider>
     </div>
     
