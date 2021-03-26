@@ -31,7 +31,6 @@ export default function InputGet(props)
   return (
     <div>
       <Input className="input"
-      
       onKeyPress={handleKeyPress}
       fullWidth
       multiline

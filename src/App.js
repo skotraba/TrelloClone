@@ -10,6 +10,7 @@ import firebase from './firebase';
 import Card from './Components/Card/Card';
 import InputAddList from './Components/Input/InputAddList';
 import Spinner from './Components/spinner/Spinner';
+import Navbar from './Components/Navbar/Navbar'
 
 
 export default function App() {
@@ -145,7 +146,7 @@ export default function App() {
 
   return (
     <div>
-      <h2>Trello Clone</h2>
+      <Navbar color="secondary"></Navbar>
       <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList}}>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">

@@ -1,9 +1,11 @@
 
 
 
-$dark: #bbb;
-$medium: #ccc;
-$light: #eee;
+$dark: rgba(175, 171, 171, .20);
+$medium: #f6cdad;
+$light: #f5f3e4;
+$white: rgb(238, 238, 228);
+
 
 $breakpoint-tablet: 768px;
 $mediaMaxWidth: 1260px;
@@ -13,14 +15,18 @@ $mediaMinWidth: 480px;
 .card {
   padding: .5rem;
   background-color: $dark !important;
+ 
   min-width: 80%;
   min-height: 80vh;
   margin: .5rem;
   position: relative;
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   &__header {
     display: flex;
     justify-content: space-between;
+    color: white;
   }
 
   &__titleBtn {
@@ -30,7 +36,7 @@ $mediaMinWidth: 480px;
 
   &__scrollable {
     position: absolute;
-    max-height: 80%;
+    max-height: 85%;
     min-width: 80%;
     overflow-y: scroll;
     padding: .5rem;
@@ -49,7 +55,7 @@ $mediaMinWidth: 480px;
 
 .cardItem{
   padding: 1rem 0;
-  background-color: $light;
+  background-color: $white;
   margin: 1rem 0;
   border-radius: .5rem;
   display: flex;
@@ -60,11 +66,11 @@ $mediaMinWidth: 480px;
   }
 
   &__icon {
-    color: rgb(248, 147, 80);
+    color: rgba(238, 154, 133, 0.671);
 
     &:hover{
       cursor: pointer;
-      color: rgb(243, 8, 8);
+      color: rgb(255, 1, 1);
     }
   }
 }
