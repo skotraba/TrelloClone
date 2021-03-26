@@ -4,6 +4,8 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import DataApi from './dataApi';
 import firebase from './firebase';
 
+import {Button} from '@material-ui/core';
+
 //Components
 import Card from './Components/Card/Card';
 import InputAddList from './Components/Input/InputAddList';
@@ -48,14 +50,25 @@ export default function App() {
 
   //Data Api Updating Cards
    const addCardItem = ((content, index) => {
+     console.log(content)
 
     let newCardItem = data[index];
-    let newcardlist = [...newCardItem.cardItems, content]
-    newCardItem.cardItems = newcardlist
+    const newCardId = uuid();
+    // let newcardlist = [...newCardItem.cardItems, content]
+    // newCardItem.cardItems = newcardlist
+
+    let listToAdd = data[index];
+    const newCard = {
+      id: newCardId,
+      content: content
+    }
+    let newcardlist = [...listToAdd.cardItems, newCard]
+
+
     const newData = [
       ...data,
     ]
-    newData[index] = newCardItem
+    newData[index].cardItems = newcardlist
     setData(newData)
 
     ref.doc(newCardItem.id).set(newCardItem);
@@ -109,6 +122,31 @@ export default function App() {
 
 
 
+
+  // const addL = () => {
+  //   const newId = uuid();
+  //   const content = "Somestuff I made up"
+  //   let CardItems = [
+  //     {
+  //       id: 12345,
+  //       content: "I'm a card"
+  //     },
+  //   ]
+  //    const newList = {
+  //      id: newId,
+  //      name: content,
+  //      cardItems: CardItems
+  //    }
+
+  //    const newData = [...data, newList];
+
+  //    console.log(newData)
+  //    ref.doc(newList.id).set(newList);
+  //    setData(newData);
+  // }
+
+
+
   return (
     <div>
       <h2>Trello Clone</h2>
@@ -124,6 +162,7 @@ export default function App() {
                 cards={list.cardItems}
               />
             ))}
+           
              <InputAddList/>
           </div>
         </DragDropContext>
@@ -134,4 +173,11 @@ export default function App() {
   )
 
 }
+
+// {data.map((list, index) => {
+//   console.log(list, index)
+//   list.cardItems.map((card, oindex) => {
+//     console.log(card, oindex)
+//   })
+// })}
 
