@@ -123,12 +123,24 @@ export default function App() {
 
   //Drag and Drop
   const handleDragEnd = (result) => {
-    console.log(result)
-    const items = Array.from(data);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    const {destination, source, draggableId} = result;
+    if(!destination) return;
+    
 
-    console.log(items);
+    const sourceList = data.filter((list) => 
+    list.id === source.droppableId)[0];
+    const destinationList = data.filter((list) => 
+    list.id === destination.droppableId)[0];
+
+
+    const draggingCard = sourceList.cardItems.filter((card) => card.id === draggableId)[0];
+
+      sourceList.cardItems.splice(source.index, 1);
+      destinationList.cardItems.splice(destination.index, 0, draggingCard);
+      
+    ref.doc(sourceList.id).set(sourceList);
+    ref.doc(destinationList.id).set(destinationList);
+
   }
 
 

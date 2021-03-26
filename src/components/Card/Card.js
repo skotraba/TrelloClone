@@ -34,7 +34,7 @@ export default function Card(props) {
         onClick={() => handleBtn(props.index)}
         />
       </div>
-      <Droppable droppableId={props.id}>
+      <Droppable droppableId={props.id} >
         {
           (provided) => (
             <div 
