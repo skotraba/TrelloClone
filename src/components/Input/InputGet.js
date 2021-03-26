@@ -13,7 +13,6 @@ export default function InputGet(props)
   const [content, setContent] = useState('')
 
   const handleBtnConfirm = (e) => {
-    console.log(content)
     addCardItem(content, props.listIndex)
     props.setOpen(false);
     setContent('')
@@ -23,11 +22,20 @@ export default function InputGet(props)
     setContent(e);
   }
 
+  const handleKeyPress = (e) => {
+    if(e.key === "Enter"){
+      handleBtnConfirm(e);
+    }
+  }
+
   return (
     <div>
       <Input className="input"
+      
+      onKeyPress={handleKeyPress}
       fullWidth
       multiline
+      onBlur={() => props.setOpen(false)}
       value={content}
       rows={4}
       variant="filled"
@@ -41,7 +49,7 @@ export default function InputGet(props)
         }}
       >
       </Input>
-      <Button
+      <Button type="submit"
         onClick={handleBtnConfirm}
       ><Add/>Add Card</Button>
       

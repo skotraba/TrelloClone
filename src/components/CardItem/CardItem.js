@@ -29,8 +29,5 @@ export default function CardItem(props) {
      
     </Draggable>
    
-   
-        
-   
   );
 }

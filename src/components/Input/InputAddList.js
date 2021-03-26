@@ -22,9 +22,17 @@ export default function InputAddList(props) {
     setContent(e.target.value)
   }
 
+  const handleKeyPress = (e) => {
+    if(e.key === "Enter"){
+      handleChange(e);
+      handleBtn();
+    }
+  }
+
   return (
     <div className="addList">
       <Input className="addList__input"
+      onKeyPress={handleKeyPress}
       fullWidth
       multiline
       value={content}

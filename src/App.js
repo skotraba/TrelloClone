@@ -9,6 +9,7 @@ import firebase from './firebase';
 //Components
 import Card from './Components/Card/Card';
 import InputAddList from './Components/Input/InputAddList';
+import Spinner from './Components/spinner/Spinner';
 
 
 export default function App() {
@@ -45,12 +46,11 @@ export default function App() {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <Spinner/>
   }
 
   //Data Api Updating Cards
    const addCardItem = ((content, index) => {
-     console.log(content)
 
     let newCardItem = data[index];
     const newCardId = uuid();
@@ -82,7 +82,6 @@ export default function App() {
     newData[lindex].cardItems.splice(cindex, 1);
     
      setData(newData);
-     console.log(data);
 
      ref.doc(newData[lindex].id).set(newData[lindex])
    })
@@ -99,7 +98,6 @@ export default function App() {
 
      const newData = [...data, newList];
 
-     console.log(newData)
      ref.doc(newList.id).set(newList);
      setData(newData);
 
