@@ -1,0 +1,26 @@
+$mediaMinWidth: 480px;
+
+.myInput {
+  background: #fff !important;
+  
+}
+
+.addList {
+  padding: .5rem;
+  min-width: 60vw;
+  
+
+  &__btn {
+    background: rgb(177, 228, 95) !important;
+    margin: 1rem 0;
+  }
+}
+
+
+@media (min-width: $mediaMinWidth){
+
+  .addList {
+    max-width: 30%;
+    min-width: 0%;
+  }
+}
