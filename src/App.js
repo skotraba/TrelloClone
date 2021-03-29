@@ -146,7 +146,7 @@ export default function App() {
 
   return (
     <div>
-      <Navbar color="secondary"></Navbar>
+      <Navbar></Navbar>
       <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList}}>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">
