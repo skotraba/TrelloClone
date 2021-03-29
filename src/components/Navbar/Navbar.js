@@ -58,9 +58,11 @@ export default function Navbar() {
               onClose={handleMenu(false)}>
                 
                 <div className="myNavBar__inner" onClick={handleMenu(false)}>
-                  <NavbarThemeItem
-                  image={Styles[0].path}
-                  />
+                  {Styles.map((item) => {
+                    return (
+                      <NavbarThemeItem image={item.path}/>
+                    )
+                  })}
                 </div>
                 
 
