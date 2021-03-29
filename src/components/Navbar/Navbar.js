@@ -33,8 +33,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const handleMenu = (boolState) => (e) => {
-    console.log("clicked")
-    console.log(boolState)
     setOpen(boolState)
   };
 
@@ -58,9 +56,9 @@ export default function Navbar() {
               onClose={handleMenu(false)}>
                 
                 <div className="myNavBar__inner" onClick={handleMenu(false)}>
-                  {Styles.map((item) => {
+                  {Styles.map((item, index) => {
                     return (
-                      <NavbarThemeItem image={item.path}/>
+                      <NavbarThemeItem index={index} image={item.path}/>
                     )
                   })}
                 </div>

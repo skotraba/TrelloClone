@@ -22,12 +22,7 @@ export default function App() {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
-    
-  //*******idk******** */
-
-  let bgImg  = Style[0].path
-
+  let bgImg  = Style[0].path;
   const [state, setState] = useState(bgImg);
 
 
@@ -170,6 +165,7 @@ export default function App() {
 
   const changeBg = (index) => {
     console.log(index);
+    setState(Style[index].path)
   }
 
 
@@ -177,8 +173,8 @@ export default function App() {
 
   return (
     <div style={{backgroundImage: `url(${state})`}} className="app">
+      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle, changeBg}}>
       <Navbar></Navbar>
-      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle}}>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">
             {data.map((list, index) => 
@@ -193,9 +189,7 @@ export default function App() {
             ))}
            
              <InputAddList/>
-             <Button>Test</Button>
           </div>
-          
         </DragDropContext>
       </DataApi.Provider>
     </div>
