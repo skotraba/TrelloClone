@@ -119,6 +119,18 @@ export default function App() {
 
   })
 
+  const updateListTitle = (title, listIndex) => {
+    // console.log(title, listId);
+    let newData = [...data];
+    newData[listIndex].name = title;
+
+
+    setData(newData);
+
+    ref.doc(newData[listIndex].id).set(newData[listIndex]);
+    console.log(data);
+  }
+
 
   //Drag and Drop
   const handleDragEnd = (result) => {
@@ -147,7 +159,7 @@ export default function App() {
   return (
     <div>
       <Navbar></Navbar>
-      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList}}>
+      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle}}>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">
             {data.map((list, index) => 
