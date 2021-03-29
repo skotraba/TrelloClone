@@ -1,6 +1,8 @@
 html {
   overflow-y: hidden;
-  background-color: #333235;
+  background-image: url('./assets/bgImages/OrangePlant.jpeg');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
 }
 
 
@@ -11,11 +13,13 @@ body {
    
    font-family: 'Open Sans', sans-serif;
    font-size: large;
-   color: rgb(73, 73, 73);
+   /* color: rgb(73, 73, 73); */
    overflow-x: scroll;
    overflow-y: hidden;
    margin: 0;
    padding: 0;
+ 
+   
 }
 
 
@@ -25,6 +29,7 @@ body {
   padding-bottom: 5rem;
   margin: .5rem;
   overflow-x: scroll;
+  /* opacity: 0; */
 }
 
 h2{

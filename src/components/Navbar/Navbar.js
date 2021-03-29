@@ -7,6 +7,11 @@ import Button from '@material-ui/core/Button';
 //
 import Drawer from '@material-ui/core/Drawer';
 
+//components
+import NavbarThemeItem from './NavbarThemeItem';
+
+//data
+import Styles from '../Styles/StyleData';
 
 import './Navbar.scss';
 
@@ -51,8 +56,14 @@ export default function Navbar() {
               anchor={'right'}
               open={open}
               onClose={handleMenu(false)}>
-                <div className="myNavBar__inner" onClick={handleMenu(false)}> I'm in a drawer!</div>
-               
+                
+                <div className="myNavBar__inner" onClick={handleMenu(false)}>
+                  <NavbarThemeItem
+                  image={Styles[0].path}
+                  />
+                </div>
+                
+
               </Drawer>
             </div>
         </Toolbar>
