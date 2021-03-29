@@ -1,0 +1,15 @@
+$dark: rgba(175, 171, 171, .20);
+$medium: #f6cdad;
+$light: #f5f3e4;
+$white: rgb(238, 238, 228);
+
+
+.myNavBar {
+  background-color: #F3B391 !important;
+
+  &__inner{
+    background: $dark !important;
+    width: 100%;
+    height: 100%;
+  }
+}
