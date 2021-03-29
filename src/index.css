@@ -1,6 +1,12 @@
 html {
   overflow-y: hidden;
-  background-image: url('./assets/bgImages/OrangePlant.jpeg');
+  /* background-image: url('./assets/bgImages/OrangePlant.jpeg'); */
+  background-repeat: no-repeat; 
+  background-size:100% 100%;
+}
+
+.app {
+  /* background-image: url('./assets/bgImages/OrangePlant.jpeg'); */
   background-repeat: no-repeat;
   background-size:100% 100%;
 }

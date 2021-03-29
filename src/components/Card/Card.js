@@ -15,12 +15,16 @@ import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 
-
 export default function Card(props) {
+
+
 
   const {removeList, updateListTitle} = useContext(dataApi);
   const [title, setTitle] = useState(props.name);
   const [show, setShow] = useState(true);
+
+
+
 
   const handleBtn = (lindex) => {
     removeList(lindex);

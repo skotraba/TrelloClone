@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import DataApi from './dataApi';
 import firebase from './firebase';
 
-// import {Button} from '@material-ui/core';
+import {Button} from '@material-ui/core';
 
 //Components
 import Card from './Components/Card/Card';
@@ -12,12 +12,26 @@ import InputAddList from './Components/Input/InputAddList';
 import Spinner from './Components/spinner/Spinner';
 import Navbar from './Components/Navbar/Navbar'
 
+//TESTTTTTT
+import Style from './Components/Styles/StyleData';
+
+
 
 export default function App() {
+
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+    
+  //*******idk******** */
+
+  let bgImg  = Style[0].path
+
+  const [state, setState] = useState(bgImg);
+
+
+  
 
   //Firebase Connection
   const ref = firebase.firestore().collection("lists");
@@ -154,10 +168,15 @@ export default function App() {
 
   }
 
+  const changeBg = (index) => {
+    console.log(index);
+  }
+
+
 
 
   return (
-    <div>
+    <div style={{backgroundImage: `url(${state})`}} className="app">
       <Navbar></Navbar>
       <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle}}>
         <DragDropContext onDragEnd={handleDragEnd}>
@@ -174,7 +193,9 @@ export default function App() {
             ))}
            
              <InputAddList/>
+             <Button>Test</Button>
           </div>
+          
         </DragDropContext>
       </DataApi.Provider>
     </div>
@@ -182,11 +203,4 @@ export default function App() {
   )
 
 }
-
-// {data.map((list, index) => {
-//   console.log(list, index)
-//   list.cardItems.map((card, oindex) => {
-//     console.log(card, oindex)
-//   })
-// })}
 
