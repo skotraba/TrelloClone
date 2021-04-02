@@ -26,7 +26,11 @@ export default function App() {
   const [state, setState] = useState(bgImg);
 
 
-  
+  function sortData(items) {
+    for(let i = 0 ; i < items.length; i ++){
+      console.log(items[i]);
+    }
+  }
 
   //Firebase Connection
   const ref = firebase.firestore().collection("lists");
@@ -46,7 +50,10 @@ export default function App() {
         const item = {...items[i], id}
         itemsIds.push(item);
       }
+
+      sortData(itemsIds);
       setData(itemsIds);
+
       setLoading(false);
     })
   }
@@ -175,11 +182,16 @@ export default function App() {
   }
 
 
-  const tempRearrange = () => {
+  const tempRearrange = (lIndex) => {
     let newData = [...data];
-    let temp = newData[3];
-    newData[3] = newData[1];
-    newData[1] = temp;
+    if(lIndex < newData.length - 1) {
+      let temp = newData[lIndex + 1]
+      newData[lIndex + 1] = newData[lIndex]
+      newData[lIndex] = temp;
+    }
+
+    console.log(newData)
+
 
     setData(newData);
   }
@@ -188,7 +200,7 @@ export default function App() {
 
   return (
     <div style={{backgroundImage: `url(${state})`}} className="app">
-      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle, changeBg, updateCardContent}}>
+      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle, changeBg, updateCardContent, tempRearrange}}>
       <Navbar></Navbar>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">

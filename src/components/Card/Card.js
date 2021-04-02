@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Paper, Input} from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 //Data
 import dataApi from '../../dataApi';
@@ -19,12 +20,14 @@ export default function Card(props) {
 
 
 
-  const {removeList, updateListTitle} = useContext(dataApi);
+  const {removeList, updateListTitle, tempRearrange} = useContext(dataApi);
   const [title, setTitle] = useState(props.name);
   const [show, setShow] = useState(true);
 
-
-
+  
+  const handleNextBtn = (lIndex) => {
+    tempRearrange(lIndex);
+  }
 
   const handleBtn = (lindex) => {
     removeList(lindex);
@@ -49,11 +52,16 @@ export default function Card(props) {
         onBlur={() => setShow(true)}
         onKeyPress={handleKeyPress} 
         className="card__title">{props.name}</Input>}
+        <div>
+          <NavigateNextIcon 
+          className="card__titleBtn" 
+          onClick={() => handleNextBtn(props.index)}/>
+          <ClearIcon 
+          className="card__titleBtn"
+          onClick={() => handleBtn(props.index)}
+          />
+        </div>
         
-        <ClearIcon 
-        className="card__titleBtn"
-        onClick={() => handleBtn(props.index)}
-        />
       </div>
       <Droppable droppableId={props.id} >
         {
