@@ -79,7 +79,7 @@ export default function Card(props) {
             {provided.placeholder}
             <InputHolder className="card__input" listIndex={props.index}/>
             
-          </div>
+            </div>
           )
           
         }

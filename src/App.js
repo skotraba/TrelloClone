@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuid} from "uuid";
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import DataApi from './dataApi';
 import firebase from './firebase';
 
@@ -169,7 +169,14 @@ export default function App() {
   }
 
 
+  const tempRearrange = () => {
+    let newData = [...data];
+    let temp = newData[3];
+    newData[3] = newData[1];
+    newData[1] = temp;
 
+    setData(newData);
+  }
 
   return (
     <div style={{backgroundImage: `url(${state})`}} className="app">
@@ -185,9 +192,8 @@ export default function App() {
                 id={list.id}
                 name={list.name}
                 cards={list.cardItems}
-              />
+                />
             ))}
-           
              <InputAddList/>
           </div>
         </DragDropContext>

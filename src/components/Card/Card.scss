@@ -16,7 +16,7 @@ $mediaMinWidth: 480px;
   padding: .5rem;
   background-color: $dark !important;
  
-  min-width: 80%;
+  min-width: 60vw !important;
   min-height: 80vh;
   margin: .5rem;
   position: relative;
@@ -83,12 +83,29 @@ $mediaMinWidth: 480px;
 }
 
 
-@media (min-width: $mediaMinWidth){
+
+//Desktop
+@media (min-width: $mediaBp1Width){
+
 
   .card {
-    min-width: 20%;
+    // display: inline-block;
+    min-width: 20% !important;
+
+    &__scrollable {
+      position: absolute;
+      max-height: 85%;
+      min-width: 80%;
+      overflow-y: scroll;
+      padding: .5rem;
+    }
+
+    
   }
+
 }
+
+
 
 
 
