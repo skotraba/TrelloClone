@@ -31,8 +31,14 @@ export default function InputGet(props)
   return (
     <div>
       <Input className="input"
+      id="test"
       onKeyPress={handleKeyPress}
       fullWidth
+      inputRef={(input) => {
+        if(input != null){
+          input.focus()
+        }
+      }}
       multiline
       onBlur={() => props.setOpen(false)}
       value={content}
@@ -42,7 +48,6 @@ export default function InputGet(props)
         className: 'myInput'
       }}
       placeholder="Enter Text Here"
-      // onChange={((e) => console.log(e.target.value))}
       onChange={(e) => {
         handleContent(e.target.value)
         }}

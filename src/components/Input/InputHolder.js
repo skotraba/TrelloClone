@@ -12,11 +12,9 @@ export default function InputHolder(props) {
 
   const [open, setOpen ] = useState(false)
 
+  
   const btnHandler = () => {
     setOpen(!open);
-    const inputs = document.querySelectorAll(".myInput");
-    let stuff = Array.from(inputs)
-    stuff[0].focus();
   }
 
   return (
