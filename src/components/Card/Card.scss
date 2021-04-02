@@ -1,7 +1,7 @@
 
 
 
-$dark: rgba(175, 171, 171, .20);
+$dark: rgba(175, 171, 171, .40);
 $medium: #f6cdad;
 $light: #f5f3e4;
 $white: rgb(238, 238, 228);
@@ -15,9 +15,8 @@ $mediaMinWidth: 480px;
 .card {
   padding: .5rem;
   background-color: $dark !important;
- 
   min-width: 60vw !important;
-  min-height: 80vh;
+  // min-height: 80vh;
   margin: .5rem;
   position: relative;
   border-radius: .5rem;
@@ -38,7 +37,7 @@ $mediaMinWidth: 480px;
     position: absolute;
     max-height: 85%;
     min-width: 80%;
-    overflow-y: scroll;
+    overflow-y: auto !important;
     padding: .5rem;
   }
 
@@ -100,7 +99,7 @@ $mediaMinWidth: 480px;
       padding: .5rem;
     }
 
-    
+
   }
 
 }

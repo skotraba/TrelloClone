@@ -73,7 +73,6 @@ export default function Card(props) {
               listIndex={props.index}
               content={card.content}
               cardId={card.id}>
-
               </CardItem>
             ))}
             {provided.placeholder}

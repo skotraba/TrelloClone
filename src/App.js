@@ -110,9 +110,6 @@ export default function App() {
 
      ref.doc(newList.id).set(newList);
      setData(newData);
-
-     
-
    })
 
    const removeList = ((lindex) => {
@@ -138,6 +135,15 @@ export default function App() {
 
     ref.doc(newData[listIndex].id).set(newData[listIndex]);
     console.log(data);
+  }
+
+
+  const updateCardContent = (content, lIndex, Cindex) => {
+    let newData = [...data];
+    let newCard = newData[lIndex].cardItems[Cindex];
+    newCard.content = content;
+
+    setData(newData);
   }
 
 
@@ -178,15 +184,18 @@ export default function App() {
     setData(newData);
   }
 
+ 
+
   return (
     <div style={{backgroundImage: `url(${state})`}} className="app">
-      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle, changeBg}}>
+      <DataApi.Provider value={{addCardItem, removeCardItem, addList, removeList, updateListTitle, changeBg, updateCardContent}}>
       <Navbar></Navbar>
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="myContainer">
             {data.map((list, index) => 
             (
               <Card
+               
                 key={list.id}
                 index={index}
                 id={list.id}

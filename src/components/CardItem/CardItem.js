@@ -4,6 +4,8 @@ import ClearIcon from '@material-ui/icons/Clear';
 import dataApi from '../../dataApi';
 import { Draggable } from 'react-beautiful-dnd';
 
+import Order from '../Order/Order';
+
 export default function CardItem(props) {
 
   const {addCardItem, removeCardItem} = useContext(dataApi);
@@ -17,12 +19,15 @@ export default function CardItem(props) {
       {
         (provided) => (
           <div 
-          className="cardItem"
-          {...provided.dragHandleProps}
-          {...provided.draggableProps}
-          ref={provided.innerRef}>
+            className="cardItem"
+            {...provided.dragHandleProps}
+            {...provided.draggableProps}
+            ref={provided.innerRef}>
             <div className="cardItem__text">{props.content} </div>
-            <div><ClearIcon onClick={btnHandler} className="cardItem__icon"/></div>
+                <div><ClearIcon onClick={btnHandler} className="cardItem__icon"/>
+                <Order content={props.content} cardIndex={props.cardIndex} listIndex={props.listIndex} />
+                </div>
+           
           </div>
         )
       }
@@ -31,3 +36,5 @@ export default function CardItem(props) {
    
   );
 }
+
+
